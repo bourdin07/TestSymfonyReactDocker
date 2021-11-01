@@ -4,7 +4,7 @@ import {
   services
 } from "../..";
 import { environnement } from "../environnement/environnement";
-// import { errorNotification } from "../../notifications/errorNotification/errorNotification";
+import { errorNotification } from "../../notifications/errorNotification/errorNotification";
 
 export const refreshToken = () => {
   const axios = Axios.create({
@@ -24,10 +24,10 @@ export const refreshToken = () => {
       // store.dispatch({ type: "DISCONNECT" });
 
       if (error.response) {
-        // errorNotification(error.response.data.message);
+        errorNotification(error.response.data.message);
         throw error.response.data;
       } else {
-        // errorNotification("Unexpected error");
+        errorNotification("Unexpected error");
         throw error;
       }
     }

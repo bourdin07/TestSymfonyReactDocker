@@ -5,9 +5,9 @@ import {
   // store,
   services
 } from "../..";
-// import { errorNotification } from "../../notifications/errorNotification/errorNotification";
+import { errorNotification } from "../../notifications/errorNotification/errorNotification";
 import { HandleResfreshToken } from "./refreshToken";
-// import NotificationHtml from "../../notifications/NotificationHtml";
+import NotificationHtml from "../../notifications/NotificationHtml";
 
 export const api = () => {
 
@@ -44,9 +44,9 @@ export const api = () => {
       if (!error.response) {
         messages = error.message.split('\n');
         if (messages.length > 1) {
-          // errorNotification(<NotificationHtml message={messages} />);
+          errorNotification(<NotificationHtml message={messages} />);
         } else {
-          // errorNotification(error.message);
+          errorNotification(error.message);
         }
         throw error.message
       } else {
@@ -56,10 +56,10 @@ export const api = () => {
             fileReader.readAsText(error.response.data);
             fileReader.onload = () => {
               const content = JSON.parse(fileReader.result);
-              // errorNotification(content.message);
+              errorNotification(content.message);
             };
             fileReader.onerror = function () {
-              // errorNotification(fileReader.error);
+              errorNotification(fileReader.error);
             };
           } else {
             if (error.response.data.message) {
@@ -68,7 +68,7 @@ export const api = () => {
               console.error(error.response.data);
               messages = ['Erreur technique'];
             }
-            // errorNotification(<NotificationHtml message={messages} />);
+            errorNotification(<NotificationHtml message={messages} />);
           }
           throw error
         } else {
@@ -83,7 +83,7 @@ export const api = () => {
             tryRequest = 0;
             sessionStorage.clear();
             // store.dispatch({ type: 'DISCONNECT' });
-            // errorNotification('Authentication error');
+            errorNotification('Authentication error');
             return;
           } else {
             tryRequest++;
