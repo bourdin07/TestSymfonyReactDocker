@@ -5,14 +5,24 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { services as API } from './services/services';
 import { api as axiosAPI } from './config/axios/api';
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore } from 'redux';
+import rootReducer from "./config/store/reducer/rootReducer";
+
+export const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export const services = new API();
 export const api = axiosAPI();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider
+    store={store}
+  >
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 
