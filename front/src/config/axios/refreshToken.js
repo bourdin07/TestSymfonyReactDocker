@@ -1,6 +1,6 @@
 import Axios from "axios";
 import {
-  // store,
+  store,
   services
 } from "../..";
 import { environnement } from "../environnement/environnement";
@@ -21,7 +21,7 @@ export const refreshToken = () => {
     (error) => {
       console.error("Error on refresh token", error.response);
       sessionStorage.clear();
-      // store.dispatch({ type: "DISCONNECT" });
+      store.dispatch({ type: "DISCONNECT" });
 
       if (error.response) {
         errorNotification(error.response.data.message);
