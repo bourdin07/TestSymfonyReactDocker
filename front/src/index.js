@@ -4,8 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { services as API } from './services/services';
+import { api as axiosAPI } from './config/axios/api';
 
 export const services = new API();
+export const api = axiosAPI();
 
 ReactDOM.render(
   <React.StrictMode>
