@@ -1,0 +1,20 @@
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    body_converter:
+        enabled: true
+        validate: true
+    format_listener:
+        enabled: true
+        rules:
+            - { path: '^/', priorities: ['json'], fallback_format: 'html' }
+    versioning: true
+    view:
+        view_response_listener: 'force'
+    serializer:
+        serialize_null: true
+    exception:
+        enabled: true
+        messages:
+            App\Exception\ConstraintViolationHttpException: true
+            App\Exception\InternatServeErrorHttpException: true
