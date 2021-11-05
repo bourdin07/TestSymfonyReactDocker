@@ -15,7 +15,7 @@ services:
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
     ports:
-      - 5436:5432
+      - 5432:5432
   adminer:
     container_name: Test_Project_Symfony_React_adminer
     image: adminer
