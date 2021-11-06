@@ -1,0 +1,18 @@
+.Login-body{
+    max-width: 500px;
+    margin: auto;
+}
+.Login-body .content-page {
+    max-width: 100% !important;
+}
+label{
+    font-weight: bold;
+}
+
+.Login-Submit-Button {
+    text-align: center;
+}
+
+.Login-Submit-Button .StandardForm-submit {
+    display: inline-block !important;
+}
